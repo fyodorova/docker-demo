@@ -1,0 +1,18 @@
+version: "3.8" 
+services: 
+"  db:" 
+"    build: ./db-container" 
+"    container_name: sqlite-db" 
+"    volumes:" 
+"      - db-data:/data" 
+"  app:" 
+"    build: ./app-container" 
+"    container_name: sqlite-client" 
+"    depends_on:" 
+"      - db" 
+"    environment:" 
+"      - DB_PATH=/data/mydata.db" 
+"    volumes:" 
+"      - db-data:/data" 
+volumes: 
+"  db-data:" 
